@@ -1,7 +1,9 @@
 /* @flow */
 
+//给Vue构造函数挂载全局方法(静态方法)或属性的代码
+
 import config from '../config'
-import { initUse } from './use'
+import { initUse } from './use'    // Vue.use
 import { initMixin } from './mixin'
 import { initExtend } from './extend'
 import { initAssetRegisters } from './assets'

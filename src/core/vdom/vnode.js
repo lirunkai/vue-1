@@ -1,8 +1,10 @@
 /* @flow */
 
+//包含
+
 export default class VNode {
   tag: string | void;
-  data: VNodeData | void;
+  data: VNodeData | void; //data是个对象，表示这个对象上拥有的属性
   children: ?Array<VNode>;
   text: string | void;
   elm: Node | void;
@@ -70,6 +72,7 @@ export default class VNode {
   }
 }
 
+// 创建一个空的VNode
 export const createEmptyVNode = (text: string = '') => {
   const node = new VNode()
   node.text = text

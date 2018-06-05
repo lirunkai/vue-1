@@ -49,6 +49,7 @@ export function _createElement (
   children?: any,
   normalizationType?: number
 ): VNode {
+  // 如果data为空, 创建空的VNode
   if (isDef(data) && isDef((data: any).__ob__)) {
     process.env.NODE_ENV !== 'production' && warn(
       `Avoid using observed data object as vnode data: ${JSON.stringify(data)}\n` +
@@ -58,6 +59,7 @@ export function _createElement (
     return createEmptyVNode()
   }
   // object syntax in v-bind
+  // 判断是否有is 渲染成别的元素
   if (isDef(data) && isDef(data.is)) {
     tag = data.is
   }
@@ -76,6 +78,7 @@ export function _createElement (
     )
   }
   // support single function children as default scoped slot
+  // children 
   if (Array.isArray(children) &&
     typeof children[0] === 'function'
   ) {

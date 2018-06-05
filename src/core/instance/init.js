@@ -1,23 +1,23 @@
 /* @flow */
 
-import config from '../config'
-import { initProxy } from './proxy'
-import { initState } from './state'
+import config from '../config'    // 获取默认的config
+import { initProxy } from './proxy'  //代理设置
+import { initState } from './state'   //
 import { initRender } from './render'
 import { initEvents } from './events'
-import { mark, measure } from '../util/perf'
+import { mark, measure } from '../util/perf'   //mark 性能监控 performance
 import { initLifecycle, callHook } from './lifecycle'
 import { initProvide, initInjections } from './inject'
 import { extend, mergeOptions, formatComponentName } from '../util/index'
 
 let uid = 0
-
+// 为vue的原型添加_init方法
 export function initMixin (Vue: Class<Component>) {
   Vue.prototype._init = function (options?: Object) {
     const vm: Component = this
     // a uid
     vm._uid = uid++
-
+    // 添加性能监控
     let startTag, endTag
     /* istanbul ignore if */
     if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
@@ -29,10 +29,12 @@ export function initMixin (Vue: Class<Component>) {
     // a flag to avoid this being observed
     vm._isVue = true
     // merge options
+    // 判断是否是组件
     if (options && options._isComponent) {
       // optimize internal component instantiation
       // since dynamic options merging is pretty slow, and none of the
       // internal component options needs special treatment.
+      // 讲options赋值给vm.$options
       initInternalComponent(vm, options)
     } else {
       vm.$options = mergeOptions(
@@ -70,7 +72,7 @@ export function initMixin (Vue: Class<Component>) {
     }
   }
 }
-
+// 讲options赋值给$options
 function initInternalComponent (vm: Component, options: InternalComponentOptions) {
   const opts = vm.$options = Object.create(vm.constructor.options)
   // doing this because it's faster than dynamic enumeration.

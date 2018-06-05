@@ -2,6 +2,8 @@
 
 import config from 'core/config'
 import { warn, makeMap } from '../util/index'
+// makeMap  使用字符串制作一个对象， 第二个参数是true的话, 要使用小写
+// warn  报错
 
 let initProxy
 
@@ -28,6 +30,7 @@ if (process.env.NODE_ENV !== 'production') {
     typeof Proxy !== 'undefined' &&
     Proxy.toString().match(/native code/)
 
+  // 代理了keywords
   if (hasProxy) {
     const isBuiltInModifier = makeMap('stop,prevent,self,ctrl,shift,alt,meta,exact')
     config.keyCodes = new Proxy(config.keyCodes, {
@@ -42,7 +45,7 @@ if (process.env.NODE_ENV !== 'production') {
       }
     })
   }
-
+  // 判断是否是全局的方法或者内置的方法 返回true或者false
   const hasHandler = {
     has (target, key) {
       const has = key in target
@@ -53,7 +56,7 @@ if (process.env.NODE_ENV !== 'production') {
       return has || !isAllowed
     }
   }
-
+  // 为key赋值
   const getHandler = {
     get (target, key) {
       if (typeof key === 'string' && !(key in target)) {

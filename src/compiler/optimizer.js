@@ -1,5 +1,7 @@
 /* @flow */
 
+//分析静态树， 优化DOM渲染
+
 import { makeMap, isBuiltInTag, cached, no } from 'shared/util'
 
 let isStaticKey

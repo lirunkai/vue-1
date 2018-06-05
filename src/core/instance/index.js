@@ -1,4 +1,6 @@
-import { initMixin } from './init'
+// vue构造函数的相关设计
+
+import { initMixin } from './init'  // 为vue的原型添加_init方法
 import { stateMixin } from './state'
 import { renderMixin } from './render'
 import { eventsMixin } from './events'

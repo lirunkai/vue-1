@@ -1,5 +1,7 @@
 /* @flow */
 
+//编译器, 将template编译为render
+
 import { parse } from './parser/index'
 import { optimize } from './optimizer'
 import { generate } from './codegen/index'

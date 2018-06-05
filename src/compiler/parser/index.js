@@ -1,5 +1,7 @@
 /* @flow */
 
+//存放将模板字符串转换成元素抽象语法树的代码
+
 import he from 'he'
 import { parseHTML } from './html-parser'
 import { parseText } from './text-parser'

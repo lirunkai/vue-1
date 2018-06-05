@@ -2,7 +2,7 @@
 
 import Vue from 'core/index'
 import config from 'core/config'
-import { extend, noop } from 'shared/util'
+import { extend, noop } from 'shared/util'  // extend(to, from) 从from继承属性  noop单纯的函数, 什么也不返回
 import { mountComponent } from 'core/instance/lifecycle'
 import { devtools, inBrowser, isChrome } from 'core/util/index'
 

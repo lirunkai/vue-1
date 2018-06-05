@@ -1,24 +1,30 @@
 /* @flow */
 
+// 导出配置
+
 import {
   no,
   noop,
   identity
 } from 'shared/util'
 
-import { LIFECYCLE_HOOKS } from 'shared/constants'
+// no 返回false
+// identity 返回输入
+// noop 返回undefined
+
+import { LIFECYCLE_HOOKS } from 'shared/constants' // 拿出lifecycle
 
 export type Config = {
-  // user
-  optionMergeStrategies: { [key: string]: Function };
-  silent: boolean;
+  // user     用户可配置
+  optionMergeStrategies: { [key: string]: Function }; //
+  silent: boolean;          // 取消日志和警告
   productionTip: boolean;
-  performance: boolean;
-  devtools: boolean;
-  errorHandler: ?(err: Error, vm: Component, info: string) => void;
-  warnHandler: ?(msg: string, vm: Component, trace: string) => void;
-  ignoredElements: Array<string>;
-  keyCodes: { [key: string]: number | Array<number> };
+  performance: boolean;       // 设置为true以在浏览器开发工具启动对组件初始化，渲染和打补丁的性能跟踪
+  devtools: boolean;               //是否使用vue-devtools检查
+  errorHandler: ?(err: Error, vm: Component, info: string) => void; // 错误处理
+  warnHandler: ?(msg: string, vm: Component, trace: string) => void;  // 报错处理
+  ignoredElements: Array<string>;        // 需要忽略的元素
+  keyCodes: { [key: string]: number | Array<number> };   // 键盘code值
 
   // platform
   isReservedTag: (x?: string) => boolean;

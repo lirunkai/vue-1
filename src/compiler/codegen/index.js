@@ -1,5 +1,7 @@
 /* @flow */
 
+//存放从抽象语法树(AST)生成render函数的代码
+
 import { genHandlers } from './events'
 import baseDirectives from '../directives/index'
 import { camelize, no, extend } from 'shared/util'
